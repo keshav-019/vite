@@ -546,6 +546,18 @@ export function buildImportAnalysisPlugin(config: ResolvedConfig): Plugin[] {
                 let renderedDeps: number[]
                 if (renderBuiltUrl) {
                   renderedDeps = depsArray.map((dep) => {
+                    // The imported chunk itself is loaded by `import(url)`, which resolves
+                    // relative to the importer. Preload it from the same URL, otherwise a
+                    // `renderBuiltUrl` result pointing elsewhere makes it load twice.
+                    if (
+                      dep === normalizedFile &&
+                      !importMapMapping &&
+                      url &&
+                      (url.startsWith('./') || url.startsWith('../'))
+                    ) {
+                      return addFileDep(url)
+                    }
+
                     const replacement = toOutputFilePathInJS(
                       this.environment,
                       dep,

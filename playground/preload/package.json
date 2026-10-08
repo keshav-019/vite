@@ -15,7 +15,11 @@
     "dev:preload-disabled": "vite --config vite.config-preload-disabled.js",
     "build:preload-disabled": "vite build --config vite.config-preload-disabled.js",
     "debug:preload-disabled": "node --inspect-brk ../../packages/vite/bin/vite --config vite.config-preload-disabled.js",
-    "preview:preload-disabled": "vite preview --config vite.config-preload-disabled.js"
+    "preview:preload-disabled": "vite preview --config vite.config-preload-disabled.js",
+    "dev:render-built-url": "vite --config vite.config-render-built-url.js",
+    "build:render-built-url": "vite build --config vite.config-render-built-url.js",
+    "debug:render-built-url": "node --inspect-brk ../../packages/vite/bin/vite --config vite.config-render-built-url.js",
+    "preview:render-built-url": "vite preview --config vite.config-render-built-url.js"
   },
   "devDependencies": {
     "terser": "^5.51.2",
